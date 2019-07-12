@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
   for (let j = 0; j < chosenNumbers.length; j++){
     cellsWithMiner.push(grids[chosenNumbers[j]])
   }
-  cellsWithMiner.map(cell => cell.classList.add('boom'))
+  cellsWithMiner.map(cell => cell.classList.add('withBomb'))
   console.log(cellsWithMiner)
 
   // above here is where I need to change to withBomb after attaching the numbers
