@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
   for (let j = 0; j < chosenNumbers.length; j++){
     cellsWithMiner.push(grids[chosenNumbers[j]])
   }
-  cellsWithMiner.map(cell => cell.classList.add('boom'))
+  cellsWithMiner.map(cell => cell.classList.add('withBomb'))
   console.log(cellsWithMiner)
 
   // above and below here is where I need to change to withBomb after attaching the numbers
@@ -100,34 +100,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
   for (let i = 0; i < grids.length; i++) {
     let bombCounter = 0
-    if (!grids[i].classList.contains('boom')){
-      if ((i > 8) && (i + 1) % 9 !== 0 && (grids[i-8].classList.contains('boom'))){
+    if (!grids[i].classList.contains('withBomb')){
+      if ((i > 8) && (i + 1) % 9 !== 0 && (grids[i-8].classList.contains('withBomb'))){
         bombCounter++
       }
-      if ((i > 8) && (i % 9 !== 0) && (grids[i-10].classList.contains('boom'))) {
+      if ((i > 8) && (i % 9 !== 0) && (grids[i-10].classList.contains('withBomb'))) {
         bombCounter++
         // console.log(bombCounter)
       }
-      if (i > 8 && grids[i-9].classList.contains('boom')) {
+      if (i > 8 && grids[i-9].classList.contains('withBomb')) {
         bombCounter++
         // console.log(bombCounter)
         // grids[i].textContent = bombCounter
       }
-      if ((i + 1) % 9 !== 0 && grids[i+1].classList.contains('boom')) {
+      if ((i + 1) % 9 !== 0 && grids[i+1].classList.contains('withBomb')) {
         bombCounter++
 
         // console.log(bombCounter)
       }
-      if (i % 9 !== 0 && grids[i-1].classList.contains('boom')) {
+      if (i % 9 !== 0 && grids[i-1].classList.contains('withBomb')) {
         bombCounter++
       }
-      if (i< 72 && i % 9 !== 0 && grids[i + 8].classList.contains('boom')){
+      if (i< 72 && i % 9 !== 0 && grids[i + 8].classList.contains('withBomb')){
         bombCounter++
       }
-      if (i < 72 && grids[i + 9].classList.contains('boom')){
+      if (i < 72 && grids[i + 9].classList.contains('withBomb')){
         bombCounter++
       }
-      if (i < 72 && (i + 1) % 9 !== 0 && grids[i + 10].classList.contains('boom')){
+      if (i < 72 && (i + 1) % 9 !== 0 && grids[i + 10].classList.contains('withBomb')){
         bombCounter++
       }
     }
@@ -135,46 +135,31 @@ document.addEventListener('DOMContentLoaded', () => {
     switch (bombCounter) {
       // grids[i].textContent = bombCounter
       case 1:
-        grids[i].classList.add('oneBomb')
+        grids[i].classList.add('oneBombHide')
         break
       case 2:
-        grids[i].classList.add('twoBombs')
+        grids[i].classList.add('twoBombsHide')
         break
       case 3:
-        grids[i].classList.add('threeBombs')
+        grids[i].classList.add('threeBombsHide')
         break
       case 4:
-        grids[i].classList.add('fourBombs')
+        grids[i].classList.add('fourBombsHide')
         break
       case 5:
-        grids[i].classList.add('fiveBombs')
+        grids[i].classList.add('fiveBombsHide')
         break
       case 6:
-        grids[i].classList.add('sixBombs')
+        grids[i].classList.add('sixBombsHide')
         break
       case 7:
-        grids[i].classList.add('sevenBombs')
+        grids[i].classList.add('sevenBombsHide')
         break
       case 8:
-        grids[i].classList.add('eightBombs')
+        grids[i].classList.add('eightBombsHide')
     }
-
-
-
   }
-    //
-    //
-    //
-    //
-    // grids.forEach(grid => grid.textContent = bombCounter)
-    // }
-    // if (!grids[0]){
-    //   if (grids[i-1].classList.contains('boom')) {
-    //     bombCounter++
-    //     console.log(bombCounter)
-    //   }
-    // }
-  // }
+
 
 
 
@@ -196,8 +181,32 @@ document.addEventListener('DOMContentLoaded', () => {
   })
   grids.forEach((grid) => {
     grid.addEventListener('click', (e) => {
-      if(e.target.classList.contains('withBomb') && !e.target.classList.contains('flag')){
+      if (e.target.classList.contains('withBomb') && !e.target.classList.contains('flag')){
         grid.classList.add('boom')
+      }
+      if (e.target.classList.contains('oneBombHide') && !e.target.classList.contains('flag')){
+        grid.classList.add('oneBomb')
+      }
+      if (e.target.classList.contains('twoBombsHide') && !e.target.classList.contains('flag')){
+        grid.classList.add('twoBombs')
+      }
+      if (e.target.classList.contains('threeBombsHide') && !e.target.classList.contains('flag')){
+        grid.classList.add('threeBombs')
+      }
+      if (e.target.classList.contains('fourBombsHide') && !e.target.classList.contains('flag')){
+        grid.classList.add('fourBombs')
+      }
+      if (e.target.classList.contains('fiveBombsHide') && !e.target.classList.contains('flag')){
+        grid.classList.add('fiveBombs')
+      }
+      if (e.target.classList.contains('sixBombsHide') && !e.target.classList.contains('flag')){
+        grid.classList.add('sixBombs')
+      }
+      if (e.target.classList.contains('sevenBombsHide') && !e.target.classList.contains('flag')){
+        grid.classList.add('sevenBombs')
+      }
+      if (e.target.classList.contains('eightBombsHide') && !e.target.classList.contains('flag')){
+        grid.classList.add('eightBombs')
       }
 
     })
