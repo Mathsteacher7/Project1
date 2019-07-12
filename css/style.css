@@ -39,6 +39,12 @@ header {
   font-size: 25px;
   padding: 0 10px; }
 
+.numberOne {
+  background-image: url(https://i.imgur.com/4IR4f44.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center; }
+
 .flag {
   background-image: url(https://i.imgur.com/4IR4f44.png);
   background-size: contain;
@@ -47,5 +53,8 @@ header {
 
 .boom {
   background-image: url(https://i.imgur.com/qIrnemX.png); }
+
+.oneBomb {
+  background-image: url(https://i.imgur.com/HT1kaue.png); }
 
 /*# sourceMappingURL=style.css.map */

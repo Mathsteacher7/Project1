@@ -9,8 +9,8 @@
 
 
 let mineCounter = 10
-let cellsWithMiner = []
-let chosenNumbers=[]
+const cellsWithMiner = []
+const chosenNumbers=[]
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -63,23 +63,92 @@ document.addEventListener('DOMContentLoaded', () => {
   for (let j = 0; j < chosenNumbers.length; j++){
     cellsWithMiner.push(grids[chosenNumbers[j]])
   }
-  cellsWithMiner.map(cell => cell.classList.add('withBomb'))
+  cellsWithMiner.map(cell => cell.classList.add('boom'))
   console.log(cellsWithMiner)
 
-  // above here is where I need to change to withBomb after attaching the numbers
-
-//
-// for (let n = 0; n < grids.length; n++) {
-//   if ()
-// }
-//
-//   grids.forEach((grid) => {
-//     if (grid.classList.contains(boom)){
-//
-//     }
-//   })
+  // above and below here is where I need to change to withBomb after attaching the numbers
 
 
+  // for (let n = 0; n < grids.length; n++) {
+  //   if (grids[n].classList.contains('boom')){
+  //     const amount = grids[n].getAttribute('data-bombcount')
+  //     grids[n+1].setAttribute('data-bombcount', amount+1)
+  //     grids[n-1].setAttribute('data-bombcount', amount+1)
+  // const amount = grids[n+1].getAttribute('data-bombcount')
+  // grids[n+1].setAttribute('data-bombcount', amount+1)
+  // grids[n-1].setAttribute('data-bombcount', amount+1)
+  // grids[n-8].setAttribute('data-bombcount', 1)
+  // grids[n-9].setAttribute('data-bombcount', 1)
+  // grids[n-10].setAttribute('data-bombcount', 1)
+  // grids[n+8].setAttribute('data-bombcount', 1)
+  // grids[n+9].setAttribute('data-bombcount', 1)
+  // grids[n+10].setAttribute('data-bombcount', 1)
+
+
+  //   }
+  // }
+
+
+  // const numberOneTest = document.querySelectorAll('.numberOne')
+  // console.log(numberOneTest)
+  //
+  //   grids.forEach((grid) => {
+  //     if (grid.classList.contains(boom)){
+  //
+  //     }
+  //   })
+
+  for (let i = 0; i < grids.length; i++) {
+    let bombCounter = 0
+    if ((i > 8) && (i + 1) % 9 !== 0 && (grids[i-8].classList.contains('boom'))){
+      bombCounter++
+    }
+    if ((i > 8) && (i % 9 !== 0) && (grids[i-10].classList.contains('boom'))) {
+      bombCounter++
+      // console.log(bombCounter)
+    }
+    if (i > 8 && grids[i-9].classList.contains('boom')) {
+      bombCounter++
+      // console.log(bombCounter)
+      // grids[i].textContent = bombCounter
+    }
+    if ((i + 1) % 9 !== 0 && grids[i+1].classList.contains('boom')) {
+      bombCounter++
+
+      // console.log(bombCounter)
+    }
+    if (i % 9 !== 0 && grids[i-1].classList.contains('boom')) {
+      bombCounter++
+    }
+    if (i< 72 && i % 9 !== 0 && grids[i + 8].classList.contains('boom')){
+      bombCounter++
+    }
+    if (i < 72 && grids[i + 9].classList.contains('boom')){
+      bombCounter++
+    }
+    if (i < 72 && (i + 1) % 9 !== 0 && grids[i + 10].classList.contains('boom')){
+      bombCounter++
+    }
+    console.log(bombCounter)
+
+    grids[i].textContent = bombCounter
+
+
+
+  }
+    //
+    //
+    //
+    //
+    // grids.forEach(grid => grid.textContent = bombCounter)
+    // }
+    // if (!grids[0]){
+    //   if (grids[i-1].classList.contains('boom')) {
+    //     bombCounter++
+    //     console.log(bombCounter)
+    //   }
+    // }
+  // }
 
 
 

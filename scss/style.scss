@@ -48,6 +48,12 @@ header {
   padding: 0 10px;
 }
 
+.numberOne{
+  background-image: url(https://i.imgur.com/4IR4f44.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 // #one{
 //   background-color: blue;
 // }
@@ -90,8 +96,11 @@ header {
   background-position: center;
 }
 .withBomb {
-  
+
 }
 .boom{
   background-image: url(https://i.imgur.com/qIrnemX.png);
+}
+.oneBomb {
+  background-image: url(https://i.imgur.com/HT1kaue.png);
 }
