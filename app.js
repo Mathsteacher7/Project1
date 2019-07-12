@@ -134,6 +134,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // console.log(bombCounter)
     switch (bombCounter) {
       // grids[i].textContent = bombCounter
+      case 0:
+        grids[i].classList.add('emptyCellHide')
+        break
       case 1:
         grids[i].classList.add('oneBombHide')
         break
@@ -207,6 +210,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       if (e.target.classList.contains('eightBombsHide') && !e.target.classList.contains('flag')){
         grid.classList.add('eightBombs')
+      }
+      if (e.target.classList.contains('emptyCellHide') && !e.target.classList.contains('flag') && !e.target.classList.contains('withBomb') ){
+        grid.classList.add('emptyCell')
       }
 
     })

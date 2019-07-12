@@ -24,7 +24,7 @@ header {
   display: flex;
   flex-wrap: wrap; }
 
-.grid div {
+.cell {
   width: calc(100% / 9);
   height: calc(100% / 9);
   background-color: grey;
@@ -87,5 +87,8 @@ header {
   background-image: url(https://i.imgur.com/pKwcB0I.png);
   background-position: center;
   background-size: cover; }
+
+.emptyCell {
+  background-color: white; }
 
 /*# sourceMappingURL=style.css.map */
