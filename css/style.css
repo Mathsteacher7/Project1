@@ -39,12 +39,6 @@ header {
   font-size: 25px;
   padding: 0 10px; }
 
-.numberOne {
-  background-image: url(https://i.imgur.com/4IR4f44.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center; }
-
 .flag {
   background-image: url(https://i.imgur.com/4IR4f44.png);
   background-size: contain;
@@ -55,6 +49,43 @@ header {
   background-image: url(https://i.imgur.com/qIrnemX.png); }
 
 .oneBomb {
-  background-image: url(https://i.imgur.com/HT1kaue.png); }
+  background-image: url(https://i.imgur.com/kHajKdp.png);
+  background-position: center;
+  background-size: cover; }
+
+.twoBombs {
+  background-image: url(https://i.imgur.com/BSb6E4O.png);
+  background-position: center;
+  background-size: cover; }
+
+.threeBombs {
+  background-image: url(https://i.imgur.com/FeuFeXq.png);
+  background-position: center;
+  background-size: cover; }
+
+.fourBombs {
+  background-image: url(https://i.imgur.com/KshiHPq.png);
+  background-position: center;
+  background-size: cover; }
+
+.fiveBombs {
+  background-image: url(https://i.imgur.com/IcADv3C.png);
+  background-position: center;
+  background-size: cover; }
+
+.sixBombs {
+  background-image: url(https://i.imgur.com/ZADFF0B.png);
+  background-position: center;
+  background-size: cover; }
+
+.sevenBombs {
+  background-image: url(https://i.imgur.com/w1NDKpv.png);
+  background-position: center;
+  background-size: cover; }
+
+.eightBombs {
+  background-image: url(https://i.imgur.com/pKwcB0I.png);
+  background-position: center;
+  background-size: cover; }
 
 /*# sourceMappingURL=style.css.map */

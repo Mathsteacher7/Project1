@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // console.log(grids)
   const counter = document.querySelector('.counter')
 
-
+  // grids[0].classList.add('oneBomb')
 
 
   //*****
@@ -100,38 +100,64 @@ document.addEventListener('DOMContentLoaded', () => {
 
   for (let i = 0; i < grids.length; i++) {
     let bombCounter = 0
-    if ((i > 8) && (i + 1) % 9 !== 0 && (grids[i-8].classList.contains('boom'))){
-      bombCounter++
+    if (!grids[i].classList.contains('boom')){
+      if ((i > 8) && (i + 1) % 9 !== 0 && (grids[i-8].classList.contains('boom'))){
+        bombCounter++
+      }
+      if ((i > 8) && (i % 9 !== 0) && (grids[i-10].classList.contains('boom'))) {
+        bombCounter++
+        // console.log(bombCounter)
+      }
+      if (i > 8 && grids[i-9].classList.contains('boom')) {
+        bombCounter++
+        // console.log(bombCounter)
+        // grids[i].textContent = bombCounter
+      }
+      if ((i + 1) % 9 !== 0 && grids[i+1].classList.contains('boom')) {
+        bombCounter++
+
+        // console.log(bombCounter)
+      }
+      if (i % 9 !== 0 && grids[i-1].classList.contains('boom')) {
+        bombCounter++
+      }
+      if (i< 72 && i % 9 !== 0 && grids[i + 8].classList.contains('boom')){
+        bombCounter++
+      }
+      if (i < 72 && grids[i + 9].classList.contains('boom')){
+        bombCounter++
+      }
+      if (i < 72 && (i + 1) % 9 !== 0 && grids[i + 10].classList.contains('boom')){
+        bombCounter++
+      }
     }
-    if ((i > 8) && (i % 9 !== 0) && (grids[i-10].classList.contains('boom'))) {
-      bombCounter++
-      // console.log(bombCounter)
-    }
-    if (i > 8 && grids[i-9].classList.contains('boom')) {
-      bombCounter++
-      // console.log(bombCounter)
+    // console.log(bombCounter)
+    switch (bombCounter) {
       // grids[i].textContent = bombCounter
+      case 1:
+        grids[i].classList.add('oneBomb')
+        break
+      case 2:
+        grids[i].classList.add('twoBombs')
+        break
+      case 3:
+        grids[i].classList.add('threeBombs')
+        break
+      case 4:
+        grids[i].classList.add('fourBombs')
+        break
+      case 5:
+        grids[i].classList.add('fiveBombs')
+        break
+      case 6:
+        grids[i].classList.add('sixBombs')
+        break
+      case 7:
+        grids[i].classList.add('sevenBombs')
+        break
+      case 8:
+        grids[i].classList.add('eightBombs')
     }
-    if ((i + 1) % 9 !== 0 && grids[i+1].classList.contains('boom')) {
-      bombCounter++
-
-      // console.log(bombCounter)
-    }
-    if (i % 9 !== 0 && grids[i-1].classList.contains('boom')) {
-      bombCounter++
-    }
-    if (i< 72 && i % 9 !== 0 && grids[i + 8].classList.contains('boom')){
-      bombCounter++
-    }
-    if (i < 72 && grids[i + 9].classList.contains('boom')){
-      bombCounter++
-    }
-    if (i < 72 && (i + 1) % 9 !== 0 && grids[i + 10].classList.contains('boom')){
-      bombCounter++
-    }
-    console.log(bombCounter)
-
-    grids[i].textContent = bombCounter
 
 
 
