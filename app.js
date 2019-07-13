@@ -58,13 +58,13 @@ document.addEventListener('DOMContentLoaded', () => {
     chosenNumbers.push(randomNumber)
   }
 
-  console.log(chosenNumbers)
+  // console.log(chosenNumbers)
 
   for (let j = 0; j < chosenNumbers.length; j++){
     cellsWithMiner.push(grids[chosenNumbers[j]])
   }
   cellsWithMiner.map(cell => cell.classList.add('withBomb'))
-  console.log(cellsWithMiner)
+  // console.log(cellsWithMiner)
 
   // above and below here is where I need to change to withBomb after attaching the numbers
 
@@ -130,6 +130,9 @@ document.addEventListener('DOMContentLoaded', () => {
       if (i < 72 && (i + 1) % 9 !== 0 && grids[i + 10].classList.contains('withBomb')){
         bombCounter++
       }
+
+
+
     }
     // console.log(bombCounter)
     switch (bombCounter) {
@@ -166,6 +169,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+
+
   grids.forEach((grid) => {
     grid.addEventListener('auxclick', (e) => {
 
@@ -189,32 +194,69 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       if (e.target.classList.contains('oneBombHide') && !e.target.classList.contains('flag')){
         grid.classList.add('oneBomb')
+        grid.classList.remove('oneBombHide')
       }
       if (e.target.classList.contains('twoBombsHide') && !e.target.classList.contains('flag')){
         grid.classList.add('twoBombs')
+        grid.classList.remove('twoBombsHide')
       }
       if (e.target.classList.contains('threeBombsHide') && !e.target.classList.contains('flag')){
         grid.classList.add('threeBombs')
+        grid.classList.remove('threeBombsHide')
       }
       if (e.target.classList.contains('fourBombsHide') && !e.target.classList.contains('flag')){
         grid.classList.add('fourBombs')
+        grid.classList.remove('fourBombsHide')
       }
       if (e.target.classList.contains('fiveBombsHide') && !e.target.classList.contains('flag')){
         grid.classList.add('fiveBombs')
+        grid.classList.remove('fiveBombsHide')
       }
       if (e.target.classList.contains('sixBombsHide') && !e.target.classList.contains('flag')){
         grid.classList.add('sixBombs')
+        grid.classList.remove('sixBombsHide')
       }
       if (e.target.classList.contains('sevenBombsHide') && !e.target.classList.contains('flag')){
         grid.classList.add('sevenBombs')
+        grid.classList.remove('sevenBombsHide')
       }
       if (e.target.classList.contains('eightBombsHide') && !e.target.classList.contains('flag')){
         grid.classList.add('eightBombs')
+        grid.classList.remove('eightBombsHide')
       }
       if (e.target.classList.contains('emptyCellHide') && !e.target.classList.contains('flag') && !e.target.classList.contains('withBomb') ){
         grid.classList.add('emptyCell')
+        grid.classList.remove('emptyCellHide')
+      }
+      const numberOfIndex = [].indexOf.call(grids, e.target)
+      console.log(numberOfIndex)
+
+
+      // winning the game and losing the game
+      // if ((!e.target.classList.contains('emptyCellHide') && !e.target.classList.contains('oneBombHide') &&  !e.target.classList.contains('twoBombsHide') && !e.target.classList.contains('threeBombsHide') &&  !e.target.classList.contains('fourBombsHide') &&  !e.target.classList.contains('fiveBombsHide') &&  !e.target.classList.contains('sixBombsHide') &&  !e.target.classList.contains('sevenBombsHide') &&  !e.target.classList.contains('eightBombsHide'))) {
+      //   alert('Congratulations! You won the game!')
+      // }
+      if (e.target.classList.contains('boom')){
+        if (confirm('Oops, you hit a bomb! you lost! Do you want to play again?')){
+          location.reload()
+        }
+
       }
 
+
+
+
+
+
+      // From here to create a switch/if statement for every emptycell I open
+
+
+      // if (e.target.classList.contains('emptyCellHide') && !e.target.classList.contains('flag') && !e.target.classList.contains('withBomb') ){
+      //   grid.classList.add('emptyCell')
+      //   switch(whatInTheGrid){
+      //     case:
+      //   }
+      // }
     })
   })
 

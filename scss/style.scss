@@ -6,6 +6,10 @@
 body {
   margin: 0;
   font-size: 24px;
+  background-image: url('https://i.imgur.com/rcM40PX.png');
+  background-repeat: repeat;
+  background-size: 50px;
+  background-color: black;
 }
 
 header {
@@ -14,6 +18,7 @@ header {
   border-bottom: 2px solid;
   padding: 10px 0;
 }
+
 
 .game {
   width: 600px;
@@ -48,6 +53,9 @@ header {
   padding: 0 10px;
 }
 
+.counter {
+  color: red;
+}
 // .numberOne{
 //   background-image: url(https://i.imgur.com/4IR4f44.png);
 //   background-size: contain;
@@ -143,4 +151,13 @@ header {
 }
 .emptyCell{
   background-color: white;
+}
+footer {
+  font-size: 10px;
+  text-align: center;
+  color: pink;
+  a {
+    text-decoration: none;
+    color: pink;
+  }
 }
