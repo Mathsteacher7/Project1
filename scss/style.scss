@@ -17,7 +17,14 @@ header {
   justify-content: space-between;
   border-bottom: 2px solid;
   padding: 10px 0;
+  .button {
+    padding: 10px 30px;
+    font-size: 15px;
+    background-color: grey;
+    color: white;
+  }
 }
+
 
 
 .game {
@@ -53,8 +60,8 @@ header {
   padding: 0 10px;
 }
 
-.counter {
-  color: red;
+.counter, .timer{
+  color: #FFF3E8;
 }
 // .numberOne{
 //   background-image: url(https://i.imgur.com/4IR4f44.png);
@@ -113,41 +120,56 @@ header {
   background-image: url(https://i.imgur.com/kHajKdp.png);
   background-position: center;
   background-size: cover;
+  background-color: white;
 }
 .twoBombs {
   background-image: url(https://i.imgur.com/BSb6E4O.png);
   background-position: center;
   background-size: cover;
+  background-color: white;
+
 }
 .threeBombs {
   background-image: url(https://i.imgur.com/FeuFeXq.png);
   background-position: center;
   background-size: cover;
+  background-color: white;
+
 }
 .fourBombs {
   background-image: url(https://i.imgur.com/KshiHPq.png);
   background-position: center;
   background-size: cover;
+  background-color: white;
+
 }
 .fiveBombs {
   background-image: url(https://i.imgur.com/IcADv3C.png);
   background-position: center;
   background-size: cover;
+  background-color: white;
+
 }
 .sixBombs {
   background-image: url(https://i.imgur.com/ZADFF0B.png);
   background-position: center;
   background-size: cover;
+  background-color: white;
+
 }
 .sevenBombs {
   background-image: url(https://i.imgur.com/w1NDKpv.png);
   background-position: center;
   background-size: cover;
+  background-color: white;
+
 }
 .eightBombs {
   background-image: url(https://i.imgur.com/pKwcB0I.png);
   background-position: center;
   background-size: cover;
+  background-color: white;
+
 }
 .emptyCell{
   background-color: white;
