@@ -18,26 +18,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // console.log(grids)
   const counter = document.querySelector('.counter')
 
-  // grids[0].classList.add('oneBomb')
 
 
-  //*****
 
-  // for (let i = 0; i < grids.length; i++){
-  //   arrOfNumbers.push(i)
-  //
-  // }
-  // console.log(arrOfNumbers)
-  // const arrOfNumbers = []
-  // for (let i = 0; i < 10; i++){
-  //   const n = Math.floor(Math.random() * grids.length)
-  //   }
-  // }
-  //
-  //
-  // // const chosenCells = randomBombs()
-  // cellsWithMiner.push(grids[chosenCells])
-  // console.log(cellsWithMiner)
+
 
   // creating a list of 10 not reapted numbers
 
@@ -69,34 +53,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // above and below here is where I need to change to withBomb after attaching the numbers
 
 
-  // for (let n = 0; n < grids.length; n++) {
-  //   if (grids[n].classList.contains('boom')){
-  //     const amount = grids[n].getAttribute('data-bombcount')
-  //     grids[n+1].setAttribute('data-bombcount', amount+1)
-  //     grids[n-1].setAttribute('data-bombcount', amount+1)
-  // const amount = grids[n+1].getAttribute('data-bombcount')
-  // grids[n+1].setAttribute('data-bombcount', amount+1)
-  // grids[n-1].setAttribute('data-bombcount', amount+1)
-  // grids[n-8].setAttribute('data-bombcount', 1)
-  // grids[n-9].setAttribute('data-bombcount', 1)
-  // grids[n-10].setAttribute('data-bombcount', 1)
-  // grids[n+8].setAttribute('data-bombcount', 1)
-  // grids[n+9].setAttribute('data-bombcount', 1)
-  // grids[n+10].setAttribute('data-bombcount', 1)
 
 
-  //   }
-  // }
-
-
-  // const numberOneTest = document.querySelectorAll('.numberOne')
-  // console.log(numberOneTest)
-  //
-  //   grids.forEach((grid) => {
-  //     if (grid.classList.contains(boom)){
-  //
-  //     }
-  //   })
 
   for (let i = 0; i < grids.length; i++) {
     let bombCounter = 0
@@ -189,6 +147,13 @@ document.addEventListener('DOMContentLoaded', () => {
   })
   grids.forEach((grid) => {
     grid.addEventListener('click', (e) => {
+      const numberOfIndex = [].indexOf.call(grids, e.target)
+      const emptyCellEvent = e.target.classList.contains('emptyCell')
+
+
+      // console.log(grids[numberOfIndex + 1])
+
+      // console.log(numberOfIndex + 1)
       if (e.target.classList.contains('withBomb') && !e.target.classList.contains('flag')){
         grid.classList.add('boom')
       }
@@ -228,13 +193,37 @@ document.addEventListener('DOMContentLoaded', () => {
         grid.classList.add('emptyCell')
         grid.classList.remove('emptyCellHide')
       }
-      const numberOfIndex = [].indexOf.call(grids, e.target)
-      console.log(numberOfIndex)
+
+      // console.log(grids)
+
+
+      // if (grids[numberOfIndex + 1].classList.contains('emptyCellHide')){
+      //   grids[numberOfIndex + 1].classList.add('emptyCell')
+      // }
+      // if (grids[numberOfIndex - 1].classList.contains('emptyCellHide')){
+      //   grids[numberOfIndex - 1].classList.add('emptyCell')
+      // }if (grids[numberOfIndex + 1].classList.contains('emptyCellHide')){
+      //   grids[numberOfIndex + 1].classList.add('emptyCell')        // }
+
+
 
 
       // winning the game and losing the game
-      // if ((!e.target.classList.contains('emptyCellHide') && !e.target.classList.contains('oneBombHide') &&  !e.target.classList.contains('twoBombsHide') && !e.target.classList.contains('threeBombsHide') &&  !e.target.classList.contains('fourBombsHide') &&  !e.target.classList.contains('fiveBombsHide') &&  !e.target.classList.contains('sixBombsHide') &&  !e.target.classList.contains('sevenBombsHide') &&  !e.target.classList.contains('eightBombsHide'))) {
-      //   alert('Congratulations! You won the game!')
+      // function winningCondition () {
+      //   return (e.target.classList.contains('cell'))
+      // }
+      // console.log(grids.every(classList.contains('cell')))
+
+      // function winningCondition() {
+      //   return ((!grid.classList.contains('emptyCellHide') && !grid.classList.contains('oneBombHide') &&  !grid.classList.contains('twoBombsHide') && !grid.classList.contains('threeBombsHide') &&  !grid.classList.contains('fourBombsHide') &&  !grid.classList.contains('fiveBombsHide') &&  !grid.classList.contains('sixBombsHide') &&  !grid.classList.contains('sevenBombsHide') &&  !grid.classList.contains('eightBombsHide')))
+      // }
+      // const test1 = grids.every(winningCondition)
+      // for (let n = 0; n < grids.length; n++){
+      //
+      // }
+      // console.log(winningCondition())
+      // if (e.target.classList.contains('cell')) {
+      //   alert('You won!')
       // }
       if (e.target.classList.contains('boom')){
         if (confirm('Oops, you hit a bomb! you lost! Do you want to play again?')){
@@ -242,7 +231,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
       }
-
+      let i = 1
+      while (grids[numberOfIndex + i].classList.contains('emptyCellHide') && e.target.classList.contains('emptyCell')){
+        grids[numberOfIndex + i].classList.add('emptyCell')
+        grids[numberOfIndex + i].classList.remove('emptyCellHide')
+        i++
+      }
 
 
 

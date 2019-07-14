@@ -46,6 +46,9 @@ header {
 .counter {
   color: red; }
 
+.eleven {
+  background-color: blue; }
+
 .flag {
   background-image: url(https://i.imgur.com/4IR4f44.png);
   background-size: contain;
