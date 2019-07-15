@@ -36,7 +36,6 @@ header {
 .cell {
   width: calc(100% / 9);
   height: calc(100% / 9);
-  background-color: grey;
   border: 3px solid white; }
 
 .start, .reset {
@@ -51,9 +50,6 @@ header {
 .counter, .timer {
   color: #FFF3E8; }
 
-.eleven {
-  background-color: blue; }
-
 .flag {
   background-image: url(https://i.imgur.com/4IR4f44.png);
   background-size: contain;
@@ -63,55 +59,55 @@ header {
 .boom {
   background-image: url(https://i.imgur.com/qIrnemX.png); }
 
-.oneBomb {
+[data-bomb-counting='1'] {
   background-image: url(https://i.imgur.com/kHajKdp.png);
   background-position: center;
   background-size: cover;
   background-color: white; }
 
-.twoBombs {
+[data-bomb-counting='2'] {
   background-image: url(https://i.imgur.com/BSb6E4O.png);
   background-position: center;
   background-size: cover;
   background-color: white; }
 
-.threeBombs {
+[data-bomb-counting='3'] {
   background-image: url(https://i.imgur.com/FeuFeXq.png);
   background-position: center;
   background-size: cover;
   background-color: white; }
 
-.fourBombs {
+[data-bomb-counting='4'] {
   background-image: url(https://i.imgur.com/KshiHPq.png);
   background-position: center;
   background-size: cover;
   background-color: white; }
 
-.fiveBombs {
+[data-bomb-counting='5'] {
   background-image: url(https://i.imgur.com/IcADv3C.png);
   background-position: center;
   background-size: cover;
   background-color: white; }
 
-.sixBombs {
+[data-bomb-counting='6'] {
   background-image: url(https://i.imgur.com/ZADFF0B.png);
   background-position: center;
   background-size: cover;
   background-color: white; }
 
-.sevenBombs {
+[data-bomb-counting='7'] {
   background-image: url(https://i.imgur.com/w1NDKpv.png);
   background-position: center;
   background-size: cover;
   background-color: white; }
 
-.eightBombs {
+[data-bomb-counting='8'] {
   background-image: url(https://i.imgur.com/pKwcB0I.png);
   background-position: center;
   background-size: cover;
   background-color: white; }
 
-.emptyCell {
+[data-bomb-counting='0'] {
   background-color: white; }
 
 footer {
@@ -121,5 +117,17 @@ footer {
   footer a {
     text-decoration: none;
     color: pink; }
+
+.hidden {
+  background-image: url(https://i.imgur.com/jBTnJGb.jpg);
+  background-position: center;
+  background-repeat: repeat;
+  background-size: contain; }
+
+.flag {
+  background-image: url(https://i.imgur.com/4IR4f44.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center; }
 
 /*# sourceMappingURL=style.css.map */
