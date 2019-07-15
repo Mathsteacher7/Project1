@@ -73,6 +73,7 @@ header {
 
 .boom{
   background-image: url(https://i.imgur.com/qIrnemX.png);
+  background-color: white;
 }
 [data-bomb-counting = '1'] {
   background-image: url(https://i.imgur.com/kHajKdp.png);
@@ -129,7 +130,7 @@ header {
   background-color: white;
 
 }
-[data-bomb-counting = '0']{
+[data-no-bombs = '0']{
   background-color: white;
 }
 footer {

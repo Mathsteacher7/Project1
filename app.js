@@ -12,8 +12,8 @@ const chosenNumbers=[]
 document.addEventListener('DOMContentLoaded', () => {
 
   const grids = document.querySelectorAll('.grid div')
-  const hidden = Array.from(document.querySelectorAll('.hidden'))
-  console.log(hidden.length)
+  // const hidden = Array.from(document.querySelectorAll('.hidden'))
+  // console.log(hidden.length)
   const counter = document.querySelector('.counter')
   const timer = document.querySelector('.timer')
 
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!grids[i].classList.contains('boom')){
       switch (bombCounter) {
         case (0) :
-          grids[i].setAttribute('data-bomb-counting', '0')
+          grids[i].setAttribute('data-no-bombs', '0')
           break
         case 1:
           grids[i].setAttribute('data-bomb-counting', '1')
@@ -124,26 +124,55 @@ document.addEventListener('DOMContentLoaded', () => {
     grid.addEventListener('click', (e) => {
       const numberOfIndex = [].indexOf.call(grids, e.target)
 
+
       if (!e.target.classList.contains('flag')) {
         grid.classList.remove('hidden')
-      }
 
-      // winning the game and losing the game
-      const hidden = Array.from(document.querySelectorAll('.hidden'))
-      console.log(hidden.length)
-      if (hidden.length === 10){
-        clearInterval(timerId)
-        alert(`You won! and you did it in ${timeTimer} seconds!`)
+        //starting to create the borders which I need to check. I did not finish yet so I commet it. Finish first thing in the morning or to check first the loop in loop
 
-      }
-      if (e.target.classList.contains('boom') && !e.target.classList.contains('flag')){
-        clearInterval(timerId)
-        if (confirm('Oops, you hit a bomb! you lost! Do you want to play again?')){
-          location.reload()
+
+        const listOfOpening = [1, -1, 9, -9]
+        if (numberOfIndex > 8 && numberOfIndex < 72 && numberOfIndex % 9 !==  0 && (numberOfIndex + 1) % 9 !== 0){
+          for (let i = 0; i < listOfOpening.length; i++){
+            const w = listOfOpening[i]
+
+            if (e.target.hasAttribute('data-no-bombs')){
+              // while (grids[numberOfIndex + w].hasAttribute('data-no-bombs')){
+              grids[numberOfIndex + w].classList.remove('hidden')
+            }
+          }
+        }
+        // else if (0 < numberOfIndex < 8){
+        //
+        //     for (let i = 0; i < listOfOpening.length; i++){
+        //       const w = listOfOpening[i]
+        //     if (e.target.hasAttribute('data-no-bombs')){
+        //       grids[numberOfIndex + w].classList.remove('hidden')
+        //     }
+        //
+        //   }
+        // }
+
+
+
+
+        // winning the game and losing the game
+        const hidden = Array.from(document.querySelectorAll('.hidden'))
+        // console.log(hidden.length)
+        if (hidden.length === 10){
+          clearInterval(timerId)
+          alert(`You won! and you did it in ${timeTimer} seconds!`)
+
+        }
+        if (e.target.classList.contains('boom') && !e.target.classList.contains('flag')){
+          clearInterval(timerId)
+          if (confirm('Oops, you hit a bomb! you lost! Do you want to play again?')){
+            location.reload()
+          }
         }
       }
+
     })
 
   })
-
 })
