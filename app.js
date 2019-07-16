@@ -127,10 +127,10 @@ document.addEventListener('DOMContentLoaded', () => {
   grids.forEach((grid) => {
     grid.addEventListener('click', (e) => {
       const numberOfIndex = grids.indexOf(e.target)
-      console.log(numberOfIndex)
-      console.log(e.target)
+      // console.log(numberOfIndex)
+      // console.log(e.target)
       const flagCell = e.target.classList.contains('flag')
-      const listOfOpening = [1, -1, 9, -9, 8, -8, 10, -10]
+      let listOfOpening = [1, -1, 9, -9, 8, -8, 10, -10]
       const hidden = Array.from(document.querySelectorAll('.hidden'))
 
 
@@ -142,16 +142,16 @@ document.addEventListener('DOMContentLoaded', () => {
       openCells()
 
       // cell 0 i === 0       [1, 10, 9]
-      // cell 8 i === 8       [-1, 8. 9]
-      // cell 73 i === 73     [-9, -8, 1]
-      // cell 81 i === 81     [-1, -10, -9]
+      // cell 8 i === 8       [-1, 8, 9]
+      // cell 72 i === 72     [-9, -8, 1]
+      // cell 80 i === 80     [-1, -10, -9]
       // cells in the first row i < 8     [1, -1, 8, 9, 10]
       // cells in last column ((i + 1) % 9 === 0  [-10, -9, -1, 8, 9]
       // cells in the first column i % 9 === 0    [-9, -8, 1, 9, 10]
       // cells in the last raw i > 72             [1, -1, -10, -9, -8]
 
 
-
+      console.log(e.target.id)
 
 
 
@@ -175,35 +175,108 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-
-
+      // console.log(grids[])
 
 
 
 
       function clearCells(numberOfIndex){
         if (grids[numberOfIndex].hasAttribute('data-no-bombs')){
-          for (let i = 0; i < listOfOpening.length; i++){
-            const w = listOfOpening[i]
-            if ((grids[numberOfIndex + w].hasAttribute('data-no-bombs')) || (grids[numberOfIndex + w].hasAttribute('data-bomb-counting'))) {
-              grids[numberOfIndex + w].classList.remove('hidden')
-
-
-
-
-
+          if (e.target === grids[0]){
+            for (let i = 0; i < listOfOpening.length; i++){
+              listOfOpening = [1, 9, 10]
+              const w = listOfOpening[i]
+              if ((grids[numberOfIndex + w].hasAttribute('data-no-bombs')) || (grids[numberOfIndex + w].hasAttribute('data-bomb-counting'))){
+                grids[numberOfIndex + w].classList.remove('hidden')
+              }
+            }
+          } else if (e.target === grids[8]) {
+            for (let i = 0; i < listOfOpening.length; i++){
+              listOfOpening = [-1, 8, 9]
+              const w = listOfOpening[i]
+              if ((grids[numberOfIndex + w].hasAttribute('data-no-bombs')) || (grids[numberOfIndex + w].hasAttribute('data-bomb-counting'))){
+                grids[numberOfIndex + w].classList.remove('hidden')
+              }
+            }
+          } else if (e.target === grids[72]) {
+            for (let i = 0; i < listOfOpening.length; i++){
+              listOfOpening = [-8, -9, 1]
+              const w = listOfOpening[i]
+              if ((grids[numberOfIndex + w].hasAttribute('data-no-bombs')) || (grids[numberOfIndex + w].hasAttribute('data-bomb-counting'))){
+                grids[numberOfIndex + w].classList.remove('hidden')
+              }
+            }
+          } else if (e.target === grids[80]) {
+            for (let i = 0; i < listOfOpening.length; i++){
+              listOfOpening = [-10, -9, -1]
+              const w = listOfOpening[i]
+              if ((grids[numberOfIndex + w].hasAttribute('data-no-bombs')) || (grids[numberOfIndex + w].hasAttribute('data-bomb-counting'))){
+                grids[numberOfIndex + w].classList.remove('hidden')
+              }
+            }
+          } else if (e.target.id < 8) {
+            for (let i = 0; i < listOfOpening.length; i++){
+              listOfOpening = [1, -1, 8, 9, 10]
+              const w = listOfOpening[i]
+              if ((grids[numberOfIndex + w].hasAttribute('data-no-bombs')) || (grids[numberOfIndex + w].hasAttribute('data-bomb-counting'))){
+                grids[numberOfIndex + w].classList.remove('hidden')
+              }
+            }
+          } else if (e.target.id > 72) {
+            for (let i = 0; i < listOfOpening.length; i++){
+              listOfOpening = [1, -1, -10, -9, -8]
+              const w = listOfOpening[i]
+              if ((grids[numberOfIndex + w].hasAttribute('data-no-bombs')) || (grids[numberOfIndex + w].hasAttribute('data-bomb-counting'))){
+                grids[numberOfIndex + w].classList.remove('hidden')
+              }
+            }
+          } else if ((e.target.id + 1) % 9 === 0) {
+            for (let i = 0; i < listOfOpening.length; i++){
+              listOfOpening = [-10, -9, -1, 8, 9]
+              const w = listOfOpening[i]
+              if ((grids[numberOfIndex + w].hasAttribute('data-no-bombs')) || (grids[numberOfIndex + w].hasAttribute('data-bomb-counting'))){
+                grids[numberOfIndex + w].classList.remove('hidden')
+              }
+            }
+          } else if (e.target.id % 9 === 0) {
+            for (let i = 0; i < listOfOpening.length; i++){
+              listOfOpening = [10, -9, 1, -8, 9]
+              const w = listOfOpening[i]
+              if ((grids[numberOfIndex + w].hasAttribute('data-no-bombs')) || (grids[numberOfIndex + w].hasAttribute('data-bomb-counting'))){
+                grids[numberOfIndex + w].classList.remove('hidden')
+              }
+            }
+          } else {
+            for (let i = 0; i < listOfOpening.length; i++){
+              listOfOpening = [1, -1, 9, -9, 8, -8, 10, -10]
+              const w = listOfOpening[i]
+              if ((grids[numberOfIndex + w].hasAttribute('data-no-bombs')) || (grids[numberOfIndex + w].hasAttribute('data-bomb-counting'))){
+                grids[numberOfIndex + w].classList.remove('hidden')
+              }
             }
           }
         }
+
+      }    // if ((grids[numberOfIndex + w].hasAttribute('data-no-bombs')) || (grids[numberOfIndex + w].hasAttribute('data-bomb-counting'))) {
+      //   grids[numberOfIndex + w].classList.remove('hidden')
+
+
+      clearCells(numberOfIndex)
+
+
+      // }
+
+
       //   listOfOpening.forEach(w => clearCells(index + w))
-      }
+
       // if (grids[numberOfIndex].hasAttribute('data-no-bombs')) {
       // // && ((numberOfIndex > 8 && numberOfIndex < 72 && numberOfIndex % 9 !==  0 && (numberOfIndex + 1) % 9 !== 0))) {
       //
-      clearCells(numberOfIndex)
+
       //
       // }
       //
+
 
 
 
