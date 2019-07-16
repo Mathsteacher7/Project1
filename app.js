@@ -11,7 +11,7 @@ const chosenNumbers=[]
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  const grids = document.querySelectorAll('.grid div')
+  const grids = Array.from(document.querySelectorAll('.grid div'))
   // const hidden = Array.from(document.querySelectorAll('.hidden'))
   // console.log(hidden.length)
   const counter = document.querySelector('.counter')
@@ -119,58 +119,111 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     })
   })
+
+
+
+
   // openning cells
   grids.forEach((grid) => {
     grid.addEventListener('click', (e) => {
-      const numberOfIndex = [].indexOf.call(grids, e.target)
+      const numberOfIndex = grids.indexOf(e.target)
+      console.log(numberOfIndex)
+      console.log(e.target)
+      const flagCell = e.target.classList.contains('flag')
+      const listOfOpening = [1, -1, 9, -9, 8, -8, 10, -10]
+      const hidden = Array.from(document.querySelectorAll('.hidden'))
 
 
-      if (!e.target.classList.contains('flag')) {
-        grid.classList.remove('hidden')
+      function openCells(){
+        if (!flagCell) {
+          grid.classList.remove('hidden')
+        }
+      }
+      openCells()
 
-        //starting to create the borders which I need to check. I did not finish yet so I commet it. Finish first thing in the morning or to check first the loop in loop
+      // cell 0 i === 0       [1, 10, 9]
+      // cell 8 i === 8       [-1, 8. 9]
+      // cell 73 i === 73     [-9, -8, 1]
+      // cell 81 i === 81     [-1, -10, -9]
+      // cells in the first row i < 8     [1, -1, 8, 9, 10]
+      // cells in last column ((i + 1) % 9 === 0  [-10, -9, -1, 8, 9]
+      // cells in the first column i % 9 === 0    [-9, -8, 1, 9, 10]
+      // cells in the last raw i > 72             [1, -1, -10, -9, -8]
 
 
-        const listOfOpening = [1, -1, 9, -9]
-        if (numberOfIndex > 8 && numberOfIndex < 72 && numberOfIndex % 9 !==  0 && (numberOfIndex + 1) % 9 !== 0){
+
+
+
+
+
+
+      // function clearCells() {
+      //   if (grids[numberOfIndex].hasAttribute('data-no-bombs')){
+      //     for (let i = 0; i < listOfOpening.length; i++){
+      //       const w = listOfOpening[i]
+      //       if (grids[0]){
+      //         if ((grids[index + w].hasAttribute('data-no-bombs')) || (grids[index + w].hasAttribute('data-bomb-counting'))) {
+      //           grids[index + w].classList.remove('hidden')
+      //       }
+
+
+      //       grids[numberOfIndex + w].classList.remove('hidden')
+      //     }
+      //   }
+      // }
+      // clearCells()
+
+
+
+
+
+
+
+
+
+      function clearCells(numberOfIndex){
+        if (grids[numberOfIndex].hasAttribute('data-no-bombs')){
           for (let i = 0; i < listOfOpening.length; i++){
             const w = listOfOpening[i]
-
-            if (e.target.hasAttribute('data-no-bombs')){
-              // while (grids[numberOfIndex + w].hasAttribute('data-no-bombs')){
+            if ((grids[numberOfIndex + w].hasAttribute('data-no-bombs')) || (grids[numberOfIndex + w].hasAttribute('data-bomb-counting'))) {
               grids[numberOfIndex + w].classList.remove('hidden')
+
+
+
+
+
             }
           }
         }
-        // else if (0 < numberOfIndex < 8){
-        //
-        //     for (let i = 0; i < listOfOpening.length; i++){
-        //       const w = listOfOpening[i]
-        //     if (e.target.hasAttribute('data-no-bombs')){
-        //       grids[numberOfIndex + w].classList.remove('hidden')
-        //     }
-        //
-        //   }
-        // }
+      //   listOfOpening.forEach(w => clearCells(index + w))
+      }
+      // if (grids[numberOfIndex].hasAttribute('data-no-bombs')) {
+      // // && ((numberOfIndex > 8 && numberOfIndex < 72 && numberOfIndex % 9 !==  0 && (numberOfIndex + 1) % 9 !== 0))) {
+      //
+      clearCells(numberOfIndex)
+      //
+      // }
+      //
 
 
 
 
-        // winning the game and losing the game
-        const hidden = Array.from(document.querySelectorAll('.hidden'))
-        // console.log(hidden.length)
-        if (hidden.length === 10){
-          clearInterval(timerId)
-          alert(`You won! and you did it in ${timeTimer} seconds!`)
 
-        }
-        if (e.target.classList.contains('boom') && !e.target.classList.contains('flag')){
-          clearInterval(timerId)
-          if (confirm('Oops, you hit a bomb! you lost! Do you want to play again?')){
-            location.reload()
-          }
+
+      // winning the game and losing the game
+
+      if (hidden.length === 10){
+        clearInterval(timerId)
+        alert(`You won! and you did it in ${timeTimer} seconds!`)
+
+      }
+      if (e.target.classList.contains('boom') && !e.target.classList.contains('flag')){
+        clearInterval(timerId)
+        if (confirm('Oops, you hit a bomb! you lost! Do you want to play again?')){
+          location.reload()
         }
       }
+
 
     })
 
