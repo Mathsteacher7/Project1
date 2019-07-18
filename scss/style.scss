@@ -6,7 +6,7 @@
 body {
   margin: 0;
   font-size: 24px;
-  background-image: url('https://i.imgur.com/pAIzExq.jpg');
+  background-image: url('https://i.imgur.com/fLkDN61.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-repeat: no-repeat;
@@ -42,26 +42,7 @@ header {
     color: white;
   }
 }
-// main {
-//   display: flex;
-//   flex-direction: row;
-//   .instructions{
-//     flex-grow: 1;
-//
-//   }
-//   .grid{
-//     flex-grow: 2;
-//   }
-// }
 
-
-
-// .game {
-//   width: 600px;
-//   height: 600px;
-//   margin: auto;
-//   padding: 50px;
-// }
 main {
   display: flex;
   border: 50px;
@@ -75,19 +56,31 @@ main {
     repeat: no-repeat;
   }
   .instructions{
-    margin: 0 10px;
+    margin: 10px 10px 0 10px;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 15px 15px 0 15px ;
+    h5 {
+      color: white;
+      margin: 10px 0 0 0;
+    }
     h6 {
-      color: #fafafa;
+      color: white;
     }
     p {
       width: 500px;
-      border: 50px;
+      border: 0 50px;
       font-size: 14px;
       color: white;
       padding: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-align: justify;
     }
 
   }
+}
+#lastline {
+  padding-bottom: 0;
 }
 
 .cell {
@@ -111,6 +104,7 @@ img{
   font-size: 25px;
   padding: 0 10px;
 }
+
 
 
 

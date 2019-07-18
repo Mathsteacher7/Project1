@@ -143,7 +143,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const flagCell = e.target.classList.contains('flag')
       let listOfOpening = [1, -1, 9, -9, 8, -8, 10, -10]
 
-
+      // console.log(typeof(e.target))
+      // console.log(typeof(e.target))
+      // console.log(grids[0])
 
       function openCells(){
         if (!flagCell) {
@@ -154,6 +156,8 @@ document.addEventListener('DOMContentLoaded', () => {
         openCells()
 
       }
+
+
       // which cells each white block should open according to its position
       // cell 0 i === 0       [1, 10, 9]
       // cell 8 i === 8       [-1, 8, 9]
@@ -168,42 +172,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-      // console.log(e.target.id)
+      // console.log(grids[+e.target.id + 1])
+
+
       // console.log(+e.target.id === 0)
       // console.log(grids[])
       // console.log(numberOfIndex)
-
-
+      // console.log(typeof(numberOfIndex))
       // use filter to change the array for my needs everytime
       // e.target.id = Math.floor(Math.random() * 81)
       function clearCells(numberOfIndex){
         if (grids[numberOfIndex].hasAttribute('data-no-bombs') && !grids[numberOfIndex].classList.contains('flag')){
 
           switch (true) {
-            case (+e.target.id === 0):
+            case (numberOfIndex === 0):
             // why filter does not work for me?
               listOfOpening = [1, 9, 10]
-              // console.log(listOfOpening)
               break
-            case (+e.target.id === 8):
+            case (numberOfIndex === 8):
               listOfOpening = [-1, 9, 8]
               break
-            case (+e.target.id === 72):
+            case (numberOfIndex === 72):
               listOfOpening = [-8, -9, 1]
               break
-            case (+e.target.id === 80):
+            case (numberOfIndex === 80):
               listOfOpening = [-1, -9, -10]
               break
-            case (+e.target.id < 8):
+            case (numberOfIndex < 8):
               listOfOpening = [1, -1, 8, 9, 10]
               break
-            case (+e.target.id > 72):
+            case (numberOfIndex > 72):
               listOfOpening = [1, -1, -10, -9, -8]
               break
-            case ((+e.target.id + 1) % 9 === 0):
+            case ((numberOfIndex + 1) % 9 === 0):
               listOfOpening = [-10, -9, -1, 8, 9]
               break
-            case (+e.target.id % 9 === 0):
+            case (numberOfIndex % 9 === 0):
               listOfOpening = [-9, -8, 1, 9, 10]
               break
             default:
@@ -221,7 +225,7 @@ document.addEventListener('DOMContentLoaded', () => {
         clearCells(numberOfIndex)
       }
 
-      const hidden = Array.from(document.querySelectorAll('.hidden'))
+
 
       // function clearCells() {
       //   if (grids[numberOfIndex].hasAttribute('data-no-bombs')){
@@ -241,38 +245,56 @@ document.addEventListener('DOMContentLoaded', () => {
       // console.log(grids[numberOfIndex + 1])
 
       // function repeatedClear (numberOfIndex) {
-      //   if (grids[numberOfIndex + 1].hasAttribute('data-no-bombs')){
+      //   if ((grids[numberOfIndex + 1].hasAttribute('data-no-bombs'))&& !grids[numberOfIndex + 1].classList.contains['hidden']){
       //     clearCells(numberOfIndex + 1)
       //     listOfOpening.forEach(offset => repeatedClear(numberOfIndex + offset))
       //   }
       // }
-      // repeatedClear(numberOfIndex)
+      // function repeatedClear(numberOfIndex)
+      // console.log()
+      function keepClearing (numberOfIndex){
+        if (grids[numberOfIndex].hasAttribute('data-no-bombs')){
+          for (let i = 0; i < listOfOpening.length; i++){
+            // debugger
+            if ((numberOfIndex + listOfOpening[i] <= 80) && (numberOfIndex + listOfOpening[i] >= 0)){
+
+              clearCells(numberOfIndex + listOfOpening[i])
 
 
+              //          listOfOpening.forEach(keepClearing(numberOfIndex + listOfOpening[i]))
+            }
 
+          }
+        }
 
+      }
+      keepClearing(numberOfIndex)
 
 
       //   listOfOpening.forEach(w => clearCells(index + w))
 
 
       // winning the game and losing the game
-
-
-
-      console.log(hidden.length)
-      // console.log(hidden.length)
+      if (e.target.classList.contains('boom') && !e.target.classList.contains('flag') && !e.shiftKey){
+        clearInterval(timerId)
+        if (confirm('Oops, you hit a bomb! you lost! Do you want to play again?')){
+          location.reload()
+        } else {
+          for (let i = 0; i < grids.length; i++ ){
+            if (grids[i].classList.contains('hidden')){
+              grids[i].classList.remove('hidden')
+            }
+          }
+        }
+      }
+      const hidden = Array.from(document.querySelectorAll('.hidden'))
       if (hidden.length === 10){
         clearInterval(timerId)
         alert(`You won! and you did it in ${timeTimer} seconds!`)
 
       }
-      if (e.target.classList.contains('boom') && !e.target.classList.contains('flag') && !e.shiftKey){
-        clearInterval(timerId)
-        if (confirm('Oops, you hit a bomb! you lost! Do you want to play again?')){
-          location.reload()
-        }
-      }
+
+
 
 
     })

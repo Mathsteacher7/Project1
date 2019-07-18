@@ -5,7 +5,7 @@
 body {
   margin: 0;
   font-size: 24px;
-  background-image: url("https://i.imgur.com/pAIzExq.jpg");
+  background-image: url("https://i.imgur.com/fLkDN61.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-repeat: no-repeat;
@@ -42,15 +42,26 @@ main {
     margin: 0 20px;
     repeat: no-repeat; }
   main .instructions {
-    margin: 0 10px; }
+    margin: 10px 10px 0 10px;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 15px 15px 0 15px; }
+    main .instructions h5 {
+      color: white;
+      margin: 10px 0 0 0; }
     main .instructions h6 {
-      color: #fafafa; }
+      color: white; }
     main .instructions p {
       width: 500px;
-      border: 50px;
+      border: 0 50px;
       font-size: 14px;
       color: white;
-      padding: 10px; }
+      padding: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-align: justify; }
+
+#lastline {
+  padding-bottom: 0; }
 
 .cell {
   width: calc(100% / 9);
