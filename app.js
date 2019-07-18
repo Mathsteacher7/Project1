@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   const timerId = setInterval(startingTimer, 1000)
 
-  // creating a list of 10 not reapted numbers
+  // creating a list of 10 unreapted numbers
 
   while(chosenNumbers.length < 10){
     let randomNumber = Math.floor((Math.random() * (grids.length)))
@@ -103,24 +103,35 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   }
-  // putting flags
+
+  //
+  // document.addEventListener("dragleave", function(event) {
+  //   // reset background of potential drop target when the draggable element leaves it
+  //   if (event.target.className == "dropzone") {
+  //     event.target.style.background = "";
+  //   }
+
+
+
+
+  // putting biscuit
   grids.forEach((grid) => {
-    grid.addEventListener('auxclick', (e) => {
-      if (e.target.classList.contains('flag')){
-        grid.classList.remove('flag')
-        mineCounter++
-        counter.textContent = mineCounter
-      } else {
-        if(mineCounter > 0) {
-          grid.classList.add('flag')
-          mineCounter--
+    grid.addEventListener('click', (e) => {
+      if(e.shiftKey){
+        if (e.target.classList.contains('flag')){
+          grid.classList.remove('flag')
+          mineCounter++
           counter.textContent = mineCounter
+        } else {
+          if(mineCounter > 0) {
+            grid.classList.add('flag')
+            mineCounter--
+            counter.textContent = mineCounter
+          }
         }
       }
     })
   })
-
-
 
 
   // openning cells
@@ -132,7 +143,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const flagCell = e.target.classList.contains('flag')
       let listOfOpening = [1, -1, 9, -9, 8, -8, 10, -10]
 
-      const hidden = Array.from(document.querySelectorAll('.hidden'))
 
 
       function openCells(){
@@ -140,7 +150,10 @@ document.addEventListener('DOMContentLoaded', () => {
           grid.classList.remove('hidden')
         }
       }
-      openCells()
+      if(!e.shiftKey){
+        openCells()
+
+      }
       // which cells each white block should open according to its position
       // cell 0 i === 0       [1, 10, 9]
       // cell 8 i === 8       [-1, 8, 9]
@@ -153,36 +166,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-      // function clearCells() {
-      //   if (grids[numberOfIndex].hasAttribute('data-no-bombs')){
-      //     for (let i = 0; i < listOfOpening.length; i++){
-      //       const w = listOfOpening[i]
-      //       if (grids[0]){
-      //         if ((grids[index + w].hasAttribute('data-no-bombs')) || (grids[index + w].hasAttribute('data-bomb-counting'))) {
-      //           grids[index + w].classList.remove('hidden')
-      //       }
 
 
-      //       grids[numberOfIndex + w].classList.remove('hidden')
-      //     }
-      //   }
-      // }
-      // clearCells()
-
-      console.log(e.target.id)
-      console.log(+e.target.id === 0)
+      // console.log(e.target.id)
+      // console.log(+e.target.id === 0)
       // console.log(grids[])
+      // console.log(numberOfIndex)
 
 
       // use filter to change the array for my needs everytime
       // e.target.id = Math.floor(Math.random() * 81)
       function clearCells(numberOfIndex){
-        if (grids[numberOfIndex].hasAttribute('data-no-bombs')){
+        if (grids[numberOfIndex].hasAttribute('data-no-bombs') && !grids[numberOfIndex].classList.contains('flag')){
+
           switch (true) {
             case (+e.target.id === 0):
             // why filter does not work for me?
               listOfOpening = [1, 9, 10]
-              console.log(listOfOpening)
+              // console.log(listOfOpening)
               break
             case (+e.target.id === 8):
               listOfOpening = [-1, 9, 8]
@@ -210,27 +211,63 @@ document.addEventListener('DOMContentLoaded', () => {
           }
           for (let i = 0; i < listOfOpening.length; i++){
             const w = listOfOpening[i]
-            if ((grids[numberOfIndex + w].hasAttribute('data-no-bombs')) || (grids[numberOfIndex + w].hasAttribute('data-bomb-counting'))){
+            if ((grids[numberOfIndex + w].hasAttribute('data-no-bombs')  || (grids[numberOfIndex + w].hasAttribute('data-bomb-counting'))) && grids[numberOfIndex + w].classList.contains('hidden')) {
               grids[numberOfIndex + w].classList.remove('hidden')
             }
           }
         }
       }
+      if(!e.shiftKey){
+        clearCells(numberOfIndex)
+      }
 
-      clearCells(numberOfIndex)
+      const hidden = Array.from(document.querySelectorAll('.hidden'))
+
+      // function clearCells() {
+      //   if (grids[numberOfIndex].hasAttribute('data-no-bombs')){
+      //     for (let i = 0; i < listOfOpening.length; i++){
+      //       const w = listOfOpening[i]
+      //       if (grids[0]){
+      //         if ((grids[index + w].hasAttribute('data-no-bombs')) || (grids[index + w].hasAttribute('data-bomb-counting'))) {
+      //           grids[index + w].classList.remove('hidden')
+      //       }
+
+
+      //       grids[numberOfIndex + w].classList.remove('hidden')
+      //     }
+      //   }
+      // }
+      // clearCells()
+      // console.log(grids[numberOfIndex + 1])
+
+      // function repeatedClear (numberOfIndex) {
+      //   if (grids[numberOfIndex + 1].hasAttribute('data-no-bombs')){
+      //     clearCells(numberOfIndex + 1)
+      //     listOfOpening.forEach(offset => repeatedClear(numberOfIndex + offset))
+      //   }
+      // }
+      // repeatedClear(numberOfIndex)
+
+
+
+
 
 
       //   listOfOpening.forEach(w => clearCells(index + w))
 
 
       // winning the game and losing the game
+
+
+
+      console.log(hidden.length)
       // console.log(hidden.length)
-      if (hidden.length === 11){
+      if (hidden.length === 10){
         clearInterval(timerId)
         alert(`You won! and you did it in ${timeTimer} seconds!`)
 
       }
-      if (e.target.classList.contains('boom') && !e.target.classList.contains('flag')){
+      if (e.target.classList.contains('boom') && !e.target.classList.contains('flag') && !e.shiftKey){
         clearInterval(timerId)
         if (confirm('Oops, you hit a bomb! you lost! Do you want to play again?')){
           location.reload()

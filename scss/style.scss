@@ -6,39 +6,88 @@
 body {
   margin: 0;
   font-size: 24px;
-  background-image: url('https://i.imgur.com/rcM40PX.png');
-  background-repeat: repeat;
-  background-size: 50px;
+  background-image: url('https://i.imgur.com/pAIzExq.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   background-color: black;
 }
 
 header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   border-bottom: 2px solid;
-  padding: 10px 0;
+  padding: 10px 550px 10px 0;
+
+  // width: 600px;
+  //  height: 600px;
+  //  margin: auto;
+  //  padding: 50px;
+  .counter {
+    color: #800020;
+    padding: 0 100px;
+    font-size: 50px;
+  }
+
+  .timer {
+    color: #800020;
+    padding: 0 100px;
+    font-size: 50px;
+  }
   .button {
     padding: 10px 30px;
     font-size: 15px;
-    background-color: grey;
+    background-color: #800020;
     color: white;
   }
 }
+// main {
+//   display: flex;
+//   flex-direction: row;
+//   .instructions{
+//     flex-grow: 1;
+//
+//   }
+//   .grid{
+//     flex-grow: 2;
+//   }
+// }
 
 
 
-.game {
-  width: 600px;
-  height: 600px;
-  margin: auto;
-  padding: 50px;
-}
-
-.grid {
-  width: 100%;
-  height: 100%;
+// .game {
+//   width: 600px;
+//   height: 600px;
+//   margin: auto;
+//   padding: 50px;
+// }
+main {
   display: flex;
-  flex-wrap: wrap;
+  border: 50px;
+
+  .grid {
+    width: 1000px;
+    height: 600px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 20px;
+    repeat: no-repeat;
+  }
+  .instructions{
+    margin: 0 10px;
+    h6 {
+      color: #fafafa;
+    }
+    p {
+      width: 500px;
+      border: 50px;
+      font-size: 14px;
+      color: white;
+      padding: 10px;
+    }
+
+  }
 }
 
 .cell {
@@ -48,7 +97,10 @@ header {
   border: 3px solid white;
 }
 
-
+img{
+  width: 30px;
+  height: 30px;
+}
 
 .start, .reset{
   background-color: blue;
@@ -60,73 +112,76 @@ header {
   padding: 0 10px;
 }
 
-.counter, .timer{
-  color: #FFF3E8;
-}
 
-.flag {
-  background-image: url(https://i.imgur.com/4IR4f44.png);
+
+
+.boom{
+  background-image: url(https://i.imgur.com/3NMtnHd.jpg);
+  background-color: white;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }
-
-.boom{
-  background-image: url(https://i.imgur.com/qIrnemX.png);
-  background-color: white;
-}
 [data-bomb-counting = '1'] {
   background-image: url(https://i.imgur.com/kHajKdp.png);
   background-position: center;
-  background-size: cover;
+  background-repeat: no-repeat;
+  background-size: 60px;
   background-color: white;
 }
 [data-bomb-counting = '2'] {
   background-image: url(https://i.imgur.com/BSb6E4O.png);
   background-position: center;
-  background-size: cover;
+  background-repeat: no-repeat;
+  background-size: 60px;
   background-color: white;
 
 }
 [data-bomb-counting = '3'] {
   background-image: url(https://i.imgur.com/FeuFeXq.png);
   background-position: center;
-  background-size: cover;
+  background-repeat: no-repeat;
+  background-size: 60px;
   background-color: white;
 
 }
 [data-bomb-counting = '4'] {
   background-image: url(https://i.imgur.com/KshiHPq.png);
   background-position: center;
-  background-size: cover;
+  background-repeat: no-repeat;
+  background-size: 60px;
   background-color: white;
 
 }
 [data-bomb-counting = '5'] {
   background-image: url(https://i.imgur.com/IcADv3C.png);
   background-position: center;
-  background-size: cover;
+  background-repeat: no-repeat;
+  background-size: 60px;
   background-color: white;
 
 }
 [data-bomb-counting = '6'] {
   background-image: url(https://i.imgur.com/ZADFF0B.png);
   background-position: center;
-  background-size: cover;
+  background-repeat: no-repeat;
+  background-size: 60px;
   background-color: white;
 
 }
 [data-bomb-counting = '7'] {
   background-image: url(https://i.imgur.com/w1NDKpv.png);
   background-position: center;
-  background-size: cover;
+  background-repeat: no-repeat;
+  background-size: 60px;
   background-color: white;
 
 }
 [data-bomb-counting = '8'] {
   background-image: url(https://i.imgur.com/pKwcB0I.png);
   background-position: center;
-  background-size: cover;
+  background-repeat: no-repeat;
+  background-size: 60px;
   background-color: white;
 
 }
@@ -136,22 +191,24 @@ header {
 footer {
   font-size: 10px;
   text-align: center;
-  color: pink;
-  a {
-    text-decoration: none;
+  color: black;
+  p {
     color: pink;
+    font-size: 14px;
   }
 }
 .hidden {
-  background-image: url(https://i.imgur.com/jBTnJGb.jpg);
+  background-image: url(https://i.imgur.com/k59PQXA.jpg);
+  background-color: #075D7F;
   background-position: center;
-  background-repeat: repeat;
+  background-repeat: no-repeat;
   background-size: contain;
 
 }
 .flag {
-  background-image: url(https://i.imgur.com/4IR4f44.png);
+  background-image: url(https://i.imgur.com/u407766.jpg);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  background-color: white;
 }
