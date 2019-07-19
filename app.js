@@ -279,7 +279,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // winning the game and losing the game
       if (e.target.classList.contains('boom') && !e.target.classList.contains('flag') && !e.shiftKey){
         clearInterval(timerId)
-        if (confirm('Oops, you hit a bomb! you lost! Do you want to play again?')){
+        if (confirm('Oops, you spilled a hot cup of tea! Be careful! Do you want to play again?')){
           location.reload()
         } else {
           for (let i = 0; i < grids.length; i++ ){
