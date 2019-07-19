@@ -6,7 +6,7 @@ Castle Tea-Party is windows' minesweeper based game. Try to discover where the h
 This is my first project as part of the Software Engineer Immersive course.
 I hope you will enjoy playing the [game](https://mathsteacher7.github.io/Project1/).
 
-![The game starts](https://github.com/Mathsteacher7/Project1/issues/1#issue-470215977)
+![The game grid in the beginning](https://user-images.githubusercontent.com/51882532/61523171-bc2def80-aa0b-11e9-81e8-8093cc000e07.png)
 
 
 ## Brief
