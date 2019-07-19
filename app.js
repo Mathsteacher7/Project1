@@ -147,6 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // console.log(typeof(e.target))
       // console.log(grids[0])
 
+
       function openCells(){
         if (!flagCell) {
           grid.classList.remove('hidden')
@@ -156,6 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
         openCells()
 
       }
+
 
 
       // which cells each white block should open according to its position
@@ -252,23 +254,23 @@ document.addEventListener('DOMContentLoaded', () => {
       // }
       // function repeatedClear(numberOfIndex)
       // console.log()
-      function keepClearing (numberOfIndex){
-        if (grids[numberOfIndex].hasAttribute('data-no-bombs')){
-          for (let i = 0; i < listOfOpening.length; i++){
-            // debugger
-            if ((numberOfIndex + listOfOpening[i] <= 80) && (numberOfIndex + listOfOpening[i] >= 0)){
-
-              clearCells(numberOfIndex + listOfOpening[i])
-
-
-              //          listOfOpening.forEach(keepClearing(numberOfIndex + listOfOpening[i]))
-            }
-
-          }
-        }
-
-      }
-      keepClearing(numberOfIndex)
+      // function keepClearing (numberOfIndex){
+      //   if (grids[numberOfIndex].hasAttribute('data-no-bombs')){
+      //     for (let i = 0; i < listOfOpening.length; i++){
+      //       // debugger
+      //       if ((numberOfIndex + listOfOpening[i] <= 80) && (numberOfIndex + listOfOpening[i] >= 0)){
+      //
+      //         clearCells(numberOfIndex + listOfOpening[i])
+      //
+      //
+      //         //          listOfOpening.forEach(keepClearing(numberOfIndex + listOfOpening[i]))
+      //       }
+      //
+      //     }
+      //   }
+      //
+      // }
+      // keepClearing(numberOfIndex)
 
 
       //   listOfOpening.forEach(w => clearCells(index + w))
