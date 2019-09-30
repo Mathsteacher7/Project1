@@ -130,6 +130,9 @@ The project started with great win of learning a lot of new advanced concepts in
 The main blocker was opening all the empty cells around an empty cell. The problem was the need to implement all the conditions also in the recursive function. For now, the player will need to open the other empty cells by clicking on them.
 Another win was dealing with CSS and flexbox methods, making sure every item of the grid and instruction is in place. In addition, working with the DOM allowed me to manipulate my HTML and CSS files without changing them.
 
+## Learning process
+
+
 ## Future features
 
 The main future features I would like to add is creating more levels of difficulty, and even a custom one, where the player can choose how many hot cups of tea will be hidden behind the doors.
