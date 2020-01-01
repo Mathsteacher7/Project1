@@ -7,6 +7,7 @@ let timeTimer = 0
 let mineCounter = 10
 const cellsWithMiner = []
 const chosenNumbers=[]
+let listOfOpening = [1, -1, 9, -9, 8, -8, 10, -10]
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -121,19 +122,55 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target.classList.contains('flag')){
           grid.classList.remove('flag')
           mineCounter++
-          counter.textContent = mineCounter
-        } else {
-          if(mineCounter > 0) {
-            grid.classList.add('flag')
-            mineCounter--
-            counter.textContent = mineCounter
-          }
+        } else if(mineCounter > 0) {
+          grid.classList.add('flag')
+          mineCounter--
         }
+        counter.textContent = mineCounter
       }
     })
   })
 
+  function clearCells(numberOfIndex){
+    if (grids[numberOfIndex].hasAttribute('data-no-bombs') && !grids[numberOfIndex].classList.contains('flag')){
 
+      switch (true) {
+        case (numberOfIndex === 0):
+        // why filter does not work for me?
+          listOfOpening = [1, 9, 10]
+          break
+        case (numberOfIndex === 8):
+          listOfOpening = [-1, 9, 8]
+          break
+        case (numberOfIndex === 72):
+          listOfOpening = [-8, -9, 1]
+          break
+        case (numberOfIndex === 80):
+          listOfOpening = [-1, -9, -10]
+          break
+        case (numberOfIndex < 8):
+          listOfOpening = [1, -1, 8, 9, 10]
+          break
+        case (numberOfIndex > 72):
+          listOfOpening = [1, -1, -10, -9, -8]
+          break
+        case ((numberOfIndex + 1) % 9 === 0):
+          listOfOpening = [-10, -9, -1, 8, 9]
+          break
+        case (numberOfIndex % 9 === 0):
+          listOfOpening = [-9, -8, 1, 9, 10]
+          break
+        default:
+          listOfOpening
+      }
+      for (let i = 0; i < listOfOpening.length; i++){
+        const w = listOfOpening[i]
+        if ((grids[numberOfIndex + w].hasAttribute('data-no-bombs')  || (grids[numberOfIndex + w].hasAttribute('data-bomb-counting'))) && grids[numberOfIndex + w].classList.contains('hidden')) {
+          grids[numberOfIndex + w].classList.remove('hidden')
+        }
+      }
+    }
+  }
   // openning cells
   grids.forEach((grid) => {
     grid.addEventListener('click', (e) => {
@@ -141,21 +178,20 @@ document.addEventListener('DOMContentLoaded', () => {
       // console.log(numberOfIndex)
       // console.log(e.target)
       const flagCell = e.target.classList.contains('flag')
-      let listOfOpening = [1, -1, 9, -9, 8, -8, 10, -10]
+
 
       // console.log(typeof(e.target))
       // console.log(typeof(e.target))
       // console.log(grids[0])
 
 
-      function openCells(){
-        if (!flagCell) {
-          grid.classList.remove('hidden')
-        }
-      }
-      if(!e.shiftKey){
-        openCells()
-
+      // function openCells(){
+      //   if (!flagCell) {
+      //     grid.classList.remove('hidden')
+      //   }
+      // }
+      if(!e.shiftKey && !flagCell){
+        grid.classList.remove('hidden')
       }
 
 
@@ -172,57 +208,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-
-
-      // console.log(grids[+e.target.id + 1])
-
-
-      // console.log(+e.target.id === 0)
-      // console.log(grids[])
-      // console.log(numberOfIndex)
-      // console.log(typeof(numberOfIndex))
-      // use filter to change the array for my needs everytime
-      // e.target.id = Math.floor(Math.random() * 81)
-      function clearCells(numberOfIndex){
-        if (grids[numberOfIndex].hasAttribute('data-no-bombs') && !grids[numberOfIndex].classList.contains('flag')){
-
-          switch (true) {
-            case (numberOfIndex === 0):
-            // why filter does not work for me?
-              listOfOpening = [1, 9, 10]
-              break
-            case (numberOfIndex === 8):
-              listOfOpening = [-1, 9, 8]
-              break
-            case (numberOfIndex === 72):
-              listOfOpening = [-8, -9, 1]
-              break
-            case (numberOfIndex === 80):
-              listOfOpening = [-1, -9, -10]
-              break
-            case (numberOfIndex < 8):
-              listOfOpening = [1, -1, 8, 9, 10]
-              break
-            case (numberOfIndex > 72):
-              listOfOpening = [1, -1, -10, -9, -8]
-              break
-            case ((numberOfIndex + 1) % 9 === 0):
-              listOfOpening = [-10, -9, -1, 8, 9]
-              break
-            case (numberOfIndex % 9 === 0):
-              listOfOpening = [-9, -8, 1, 9, 10]
-              break
-            default:
-              listOfOpening
-          }
-          for (let i = 0; i < listOfOpening.length; i++){
-            const w = listOfOpening[i]
-            if ((grids[numberOfIndex + w].hasAttribute('data-no-bombs')  || (grids[numberOfIndex + w].hasAttribute('data-bomb-counting'))) && grids[numberOfIndex + w].classList.contains('hidden')) {
-              grids[numberOfIndex + w].classList.remove('hidden')
-            }
-          }
-        }
-      }
       if(!e.shiftKey){
         clearCells(numberOfIndex)
       }
